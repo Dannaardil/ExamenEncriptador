@@ -159,14 +159,16 @@ class EncryptorComponent extends HTMLElement {
                 font-family: "Inter_24pt-Regular";
                 font-size: 24px;
                 word-wrap: break-word;
-                width: 100%;
-                height: 100%;
+                width: 30vh;
+                height: 70vh;
                 overflow-y: auto;
                 margin-bottom: 15px;
             }
 
             .active {
-                display: flex;
+                display: grid;
+             
+
             }
 
             @media (max-width: 500px) {
