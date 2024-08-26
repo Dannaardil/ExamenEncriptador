@@ -51,6 +51,7 @@ class EncryptorComponent extends HTMLElement {
             form {
                 display: flex;
                 width: 100%;
+                margin-top: 110px;
                 flex-direction: column;
                 justify-content: space-between;
                 margin-right: 2rem;
@@ -126,7 +127,6 @@ class EncryptorComponent extends HTMLElement {
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                width: 100%;
                 height: 100%;
                 border-radius: 32px;
                 padding: 32px;
