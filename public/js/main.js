@@ -225,23 +225,32 @@ class EncryptorComponent extends HTMLElement {
         const formOutputMessage = this.shadowRoot.querySelector('.form-output__message');
         const outputParagraph = this.shadowRoot.querySelector('.form-output__message p');
         const btnCopy = this.shadowRoot.querySelector('#copy');
-
+    
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const btn = e.submitter.dataset.accion;
             const data = Object.fromEntries(new FormData(e.target));
-
-            if (btn === "encrypt") {
+    
+            const url = btn === "encrypt" ? '/encrypt' : '/decrypt';
+    
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ text: data.chain }),
+            })
+            .then(response => response.json())
+            .then(data => {
                 formOutput.classList.remove("active");
                 formOutputMessage.classList.add("active");
-                outputParagraph.textContent = this.encrypt(data);
-            } else if (btn === "decrypt") {
-                formOutput.classList.remove("active");
-                formOutputMessage.classList.add("active");
-                outputParagraph.textContent = this.decrypt(data);
-            }
+                outputParagraph.textContent = data.result;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         });
-
+    
         btnCopy.addEventListener('click', () => {
             navigator.clipboard.writeText(outputParagraph.textContent)
                 .then(() => {
@@ -254,32 +263,6 @@ class EncryptorComponent extends HTMLElement {
                 });
         });
     }
-
-    encrypt(object) {
-        let word = object.chain.split(" ");
-        let conversion = word.map((value) => {
-            value = value.split('');
-            return value.map((character) => {
-                if (character === "e") return "enter";
-                else if (character === "i") return "imes";
-                else if (character === "a") return "ai";
-                else if (character === "o") return "ober";
-                else if (character === "u") return "ufat";
-                else return character;
-            }).join("");
-        }).join(" ");
-        return conversion;
-    }
-
-    decrypt(object) {
-        let word = object.chain;
-        word = word.replace(/enter/g, "e");
-        word = word.replace(/imes/g, "i");
-        word = word.replace(/ai/g, "a");
-        word = word.replace(/ober/g, "o");
-        word = word.replace(/ufat/g, "u");
-        return word;
-    }
-}
+}    
 
 customElements.define('encryptor-component', EncryptorComponent);
