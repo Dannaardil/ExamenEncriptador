@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
 ::-webkit-scrollbar-track {
@@ -24,6 +25,8 @@
 
 body {
     background: var(--bg-tertiary);
+    display: grid;
+    grid-template-columns: 20fr 1fr;
 }
 
 header {
@@ -89,11 +92,17 @@ encryptor-component {
 }
 
 /* Mobile */
-@media (max-width: 500px) {
+@media (max-width: 800px) {
     header {
         top: 24px;
         left: -30px;
     }
+    body{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+ 
     encryptor-component {
         padding-top: 152px;
         padding-left: 16px;

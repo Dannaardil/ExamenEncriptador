@@ -16,7 +16,7 @@ class EncryptorComponent extends HTMLElement {
             @import url(variables.css);
          
             :host {
-                display: block;
+              
                 width: 100%;
                 height: 100%;
             }
@@ -173,6 +173,7 @@ class EncryptorComponent extends HTMLElement {
                 .form-input__button {
                     flex-direction: column;
                 }
+                 
 
                 .form-output__message p {
                     height: 432px;
