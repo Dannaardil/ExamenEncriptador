@@ -173,12 +173,24 @@ class EncryptorComponent extends HTMLElement {
                 .form-input__button {
                     flex-direction: column;
                 }
-                 
+              
 
                 .form-output__message p {
                     height: 432px;
                 }
-            }
+                     .form-output{
+                    margin-top: 1rem;
+                    width: 37vh;
+                }
+                     form{
+                    margin-top: 7rem;
+                    width: 37vh;
+
+                }
+             
+               
+             }
+    
         </style>
            
             <form id="myForm">

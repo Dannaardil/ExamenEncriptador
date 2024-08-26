@@ -92,23 +92,37 @@ encryptor-component {
 }
 
 /* Mobile */
-@media (max-width: 800px) {
+@media (max-width: 500px) {
     header {
         top: 24px;
         left: -30px;
     }
     body{
         display: grid;
-        grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
+        
     }
  
     encryptor-component {
-        padding-top: 152px;
-        padding-left: 16px;
-        padding-right: 16px;
-    }
+      
+        /* padding-top: 152px; */
+        /* padding-left: 16px;
+        padding-right: 16px; */
+        
+
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 2fr;
+          
+        
+    } 
+    
+  
     .main__form-ouput {
         padding: 0 16px 16px;
+    }
+    .form-output{
+        margin-top: 1rem;
+        width: 37vh;
     }
 }
